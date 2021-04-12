@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html ng-app>
+<html ng-app="portfolioApp">
 
 <head>
 
@@ -27,6 +27,9 @@ accConf = {"events":{"endpointPaths":["/a8f4d8cd95e164917035b64b867a45dd"]}};
       padding-right: 50px;
     }
   </style>
+<script src="respond.js"></script>
+<script src="angular.min.js"></script> 
+<script src="controllers.js"></script>
 </head>
 
 <body>
@@ -71,7 +74,7 @@ Należy pamiętać, że mało kto będzie przewijać 50 czy więcej slajdów wi�
 
 </section>
 
-<section id="unikalne-page">
+<section  id="unikalne-page" ng-controller="GalleryListCtrl">
 <div class="container"></div>
 <h1>Portfolio</h1>
 <p>
@@ -85,27 +88,41 @@ Należy pamiętać, że mało kto będzie przewijać 50 czy więcej slajdów wi�
 
   <div class="row">
     <p>ilosc zdjec {{2*3}}</p>
-    <div class="col-sm-4">
-      <img src="1.jpg" alt="" width="25%">
-      <h3>Rzym</h3>
-      <h5>2011.02.21</h5>
+    <div  class="col-sm-4"  ng-repeat="gallery in galleries">
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
+      <p>{{gallery.sekcja}}</p>
+      <span ng-non-bindable>{{gallery.when| date:'medium'}}</span>:
+    <span>{{gallery.when | date:'medium'}}</span><br>
     </div>
     <div class="col-sm-4">
-      2 zdjecie
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
     </div>
     <div class="col-sm-4">
-      3 zdjecie
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-4">
-      1 zdjecie
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
+      <p>{{gallery.sekcja}}</p>
     </div>
     <div class="col-sm-4">
-      2 zdjecie
+      <img src="{{gallery.thumbnailUrl}}"> 
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
     </div>
     <div class="col-sm-4">
-      3 zdjecie
+      <img src="{{gallery.thumbnailUrl}}">
+      <h3>{{gallery.title}}</h3>
+      <h5><strong>Kiedy :</strong>{{gallery.when}}</h5>
     </div>
   </div>
 </div>
@@ -484,8 +501,6 @@ Kopiowanie, przetwarzanie, rozpowszechnianie tych materiałów w całości lub w
 
   <!-- Optionally enable responsive features in IE8 -->
 
-  <script src="respond.js"></script>
-  <script src="angular.min.js"></script> 
 </body>
 
 </html>
